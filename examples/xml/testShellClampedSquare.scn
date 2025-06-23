@@ -101,18 +101,7 @@ Results with bending only and a 9x9 grid:
             <TriangularBendingFEMForceField name="FEM" bending="true" youngModulus="1.092e6" poissonRatio="0.42" thickness="0.001" />
             <ConstantForceField indices="0 1 2 3 4 5 6 7 8" forces="0 0 0.001 0 0 0"/>
             
-            <Node name="SubTriangles">
-                <TriangleSetTopologyContainer name="subTrianglesTopo"/>
-                <!--TriangleSubdivisionTopologicalMapping object1="trianglesTopo" object2="subTrianglesTopo" subdivisions="1"/>-->
-                <MechanicalObject name="subPoints" topology="@subTrianglesTopo"/>
-                <BendingPlateMechanicalMapping input="@../../basePoints" output="@subPoints" />
-				<TriangleCollisionModel />
-				
-                <Node name="visual">
-                    <OglModel name="Visual" color="green"/>
-                    <IdentityMapping input="@../subPoints" output="@Visual"/>
-                </Node>
-            </Node>
+            
 			
         </Node>
     </Node>

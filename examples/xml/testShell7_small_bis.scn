@@ -43,25 +43,6 @@
 <!--        <OglModel name="Visual" color="green"/>-->
     </Node>
 
-    <!--<Node name="pointA">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0 0 0 0.5 -0.5 -0.5 0.5"/>
-    </Node>
-
-    <Node name="pointB">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0 0 0.001 0.5 -0.5 -0.5 0.5"/>
-    </Node>
-
-    <Node name="pointC">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0 0 0.002 0.5 -0.5 -0.5 0.5"/>
-   </Node>
-
-   <Node name="pointD">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0 0 0.003 0.5 -0.5 -0.5 0.5"/>
-   </Node>
-
-    <Node name="pointE">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0 0 0.004 0.5 -0.5 -0.5 0.5"/>
-    </Node>-->
 
     <Node name="7smallTriangles">
         <EulerImplicitSolver rayleighMass="1.0" rayleighStiffness="0.5"/>
@@ -71,36 +52,10 @@
         <TriangleSetTopologyContainer name="baseTriangles" src="@loader" />
         <MechanicalObject name="tri" template="Rigid3" topology="@baseTriangles" showIndices="false" showIndicesScale="0.0007" rest_position="@../Rest_position/RestVertex2Frame.frames" position="@../Rest_position/RestVertex2Frame.frames"/>
         <UniformMass vertexMass="0.1 0.1 [ 0.1 0 0 ,  0 0.1 0 ,  0 0 0.05 ]" showAxisSizeFactor="0.0002"  />
-        <!--<AttachProjectiveConstraint name="ConstraintA" object2="@tri" object1="@/pointA/fixedPoint" indices1="0" indices2="0" freeRotations="false" />
-        <AttachProjectiveConstraint name="ConstraintB" object2="@tri" object1="@/pointB/fixedPoint" indices1="0" indices2="1" freeRotations="false" />
-        <AttachProjectiveConstraint name="ConstraintC" object2="@tri" object1="@/pointC/fixedPoint" indices1="0" indices2="2" freeRotations="false" />
-        <AttachProjectiveConstraint name="ConstraintD" object2="@tri" object1="@/pointD/fixedPoint" indices1="0" indices2="3" freeRotations="false" />
-        <AttachProjectiveConstraint name="ConstraintE" object2="@tri" object1="@/pointE/fixedPoint" indices1="0" indices2="4" freeRotations="false" />-->
-        <FixedRotationProjectiveConstraint FixedZRotation="true"/>
         <FixedProjectiveConstraint indices="0-4"/>
         <ConstantForceField indices="9-11" forces="-0.00005 0 0 0 0 0"/>
         <TriangularBendingFEMForceField name="FEM" bending="true" youngModulus="1.092e6" poissonRatio="0.42" thickness="0.0001"/>
-
-<!--        <Node>-->
-<!--            <MechanicalObject name="basePointsVec3" template="Vec3d"/>-->
-<!--            <IdentityMapping/>-->
-<!--            <Node name="VisualBasePoints">-->
-<!--                <OglModel name="Visual" color="green"/>-->
-<!--                <IdentityMapping object1="@/basePointsVec3" object2="@Visual"/>-->
-<!--            </Node>-->
-<!--        </Node>-->
-
-        <Node name="SubTriangles">
-            <TriangleSetTopologyContainer  name="subTriangles"/>
-            <!--<TriangleSubdivisionTopologicalMapping object1="@baseTriangles" object2="@subTriangles" subdivisions="2"/>-->
-            <MechanicalObject  name="subPoints" topology="@subTriangles" showIndices="false" showIndicesScale="0.0003"/>
-            <BendingPlateMechanicalMapping input="@../tri" output="@subPoints"/>
-            <TriangleCollisionModel />
-            <Node name="visual">
-                <OglModel name="Visual" color="red"/>
-                <IdentityMapping input="@../subPoints" output="@Visual"/>
-            </Node>
-        </Node>
+        
 
     </Node>
 </Node>

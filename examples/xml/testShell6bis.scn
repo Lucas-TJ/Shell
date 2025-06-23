@@ -32,34 +32,10 @@
     <CollisionResponse name="Response" response="PenaltyContactForceField"/>
     <MinProximityIntersection name="Proximity" alarmDistance="0.8" contactDistance="0.5"/>
 
-    <!--<Node name="pointA">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0 0 0 0 0 0 1"/>
-    </Node>
-
-    <Node name="pointB">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0.5 0 0 0 0 0 1"/>
-   </Node>
-
-   <Node name="pointC">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="1 0 0 0 0 0 1"/>
-   </Node>
-
-    <Node name="pointD">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0.25 0.45 0 0 0 0 1"/>
-    </Node>
-
-    <Node name="pointE">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0.75 0.45 0 0 0 1"/>
-    </Node>
-
-    <Node name="pointF">
-       <MechanicalObject template="Rigid3" name="fixedPoint" position="0.5 0.9 0 0 0 0 1"/>
-    </Node>-->
-
     <Node name="4triangles">
             <EulerImplicitSolver rayleighMass="1.0" rayleighStiffness="1.5"/>
-    <!--        <CGLinearSolver iterations="100" tolerance="1e-15" threshold="1e-15"/>-->
-    <!--        <CGLinearSolver template="FullMatrix" iterations="100" tolerance="1e-15" threshold="1e-15"/>-->
+            <!--<CGLinearSolver iterations="100" tolerance="1e-15" threshold="1e-15"/>-->
+            <!--<CGLinearSolver template="FullMatrix" iterations="100" tolerance="1e-15" threshold="1e-15"/>-->
             <!--<SparseLDLSolver name="SparseLDL Solver" printLog="false" />-->
             <CGLinearSolver iterations="100" tolerance="1e-15" threshold="1e-15"/>
             <Node name="fixed">
@@ -67,8 +43,6 @@
             <TriangleSetTopologyContainer name="baseTriangles" src="@loader" />
             <MechanicalObject name="tri" template="Rigid3" topology="@baseTriangles" showIndices="true" showIndicesScale="0.0007"/>
             <UniformMass vertexMass="0.1 0.1 [ 0.1 0 0 ,  0 0.1 0 ,  0 0 0.05 ]" showAxisSizeFactor="0.2"  />
-            <!--<AttachProjectiveConstraint name="Constraint" object2="@tri" object1="@/pointA/fixedPoint" indices1="0" indices2="0" freeRotations="false" />
-            <AttachProjectiveConstraint name="Constraint2" object2="@tri" object1="@/pointC/fixedPoint" indices1="0" indices2="2" freeRotations="false" />-->
             <FixedProjectiveConstraint indices="0 2"/>
             <FixedRotationProjectiveConstraint FixedZRotation="true"/>
             <ConstantForceField indices="5" forces="0 0 1 0 0 0"/>
@@ -77,7 +51,7 @@
                 <TriangleSetTopologyContainer  name="subTriangles"/>
                 <!--<TriangleSubdivisionTopologicalMapping object1="baseTriangles" object2="subTriangles" subdivisions="2"/>-->
                 <MechanicalObject  name="subPoints" topology="@subTriangles" showIndices="true" showIndicesScale="0.0003"/>
-    <!--            <ConstantForceField points="5 9" forces="0 0 3"/>-->
+                <!--<ConstantForceField points="5 9" forces="0 0 3"/>-->
                 <BendingPlateMechanicalMapping input="@../tri" output="@subPoints"/>
                 <TriangleCollisionModel />
                 <Node name="visual">
@@ -86,15 +60,6 @@
                 </Node>
             </Node>
         </Node>
-<!--        <Node>-->
-<!--            <MechanicalObject name="basePointsVec3" template="Vec3d"/>-->
-<!--            <IdentityMapping/>-->
-<!--            <Node name="VisualBasePoints">-->
-<!--                <OglModel name="Visual" color="green"/>-->
-<!--                <IdentityMapping object1="basePointsVec3" object2="Visual"/>-->
-<!--            </Node>-->
-<!--        </Node>-->
-
         
 
     </Node>

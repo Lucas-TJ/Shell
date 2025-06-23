@@ -71,32 +71,9 @@
             <FixedRotationProjectiveConstraint FixedZRotation="true"/>
             <ConstantForceField indices="9-11" forces="0 0 5 0 0 0"/>
             <TriangularBendingFEMForceField name="FEM" bending="true" youngModulus="1.092e6" poissonRatio="0.49" thickness="0.1"/>
-            <Node name="SubTriangles">
-                <!--<TriangleSubdivisionTopologicalMapping name="subMapping"
-                    input="@../baseTriangles" output="@../baseTriangles"
-                    inputPositions="@../tri.position" inputTriangles="@../baseTriangles.triangles"
-                    subdivisions="3"/>-->
-                <TriangleSetTopologyContainer  name="subTrianglesTopo"
-                    position="@subMapping.outputPositions" triangles="@subMapping.outputTriangles" />
-                <MechanicalObject name="subPoints" topology="@subTrianglesTopo" rest_position="@subMapping.outputPositions" />
-                <BendingPlateMechanicalMapping input="@.." output="@."/>
-                <TriangleCollisionModel />
-                <Node name="visual">
-                    <OglModel name="Visual" color="red"/>
-                    <IdentityMapping input="@../subPoints" output="@Visual"/>
-                </Node>
-            </Node>
+            
         </Node>
-<!--        <Node>-->
-<!--            <MechanicalObject name="basePointsVec3" template="Vec3d"/>-->
-<!--            <IdentityMapping/>-->
-<!--            <Node name="VisualBasePoints">-->
-<!--                <OglModel name="Visual" color="green"/>-->
-<!--                <IdentityMapping object1="@basePointsVec3" object2="Visual"/>-->
-<!--            </Node>-->
-<!--        </Node>-->
-
-        
+       
 
     </Node>
 </Node>

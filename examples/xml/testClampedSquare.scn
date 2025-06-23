@@ -48,14 +48,7 @@
         <ConstantForceField indices="0-24" forces="0 0 11.1 0 0 0"/>
         <TriangularBendingFEMForceField name="FEM" bending="true" youngModulus="1.092e6" poissonRatio="0.3" thickness="0.1" />
         
-        <Node name="SubTriangles">
-            
-            <TriangleSetTopologyContainer name="subTrianglesTopo"/>
-<!--            <TriangleSubdivisionTopologicalMapping object1="trianglesTopo" object2="subTrianglesTopo" subdivisions="2"/>
--->         <MechanicalObject name="subPoints" topology="@subTrianglesTopo" />
-            <BendingPlateMechanicalMapping input="@../tri" output="@subPoints" />
-            <TriangleCollisionModel/>
-        </Node>
+        
 
     </Node>
 
