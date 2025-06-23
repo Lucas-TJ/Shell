@@ -22,7 +22,7 @@
         <RequiredPlugin name="Sofa.Component.Topology.Container.Dynamic"/> <!-- Needed to use components [TriangleSetTopologyContainer] -->  
     </Node>
 
-    <VisualStyle displayFlags="showBehaviorModels hideMappings hideForceFields showVisualModels"/>
+    <VisualStyle displayFlags="showBehaviorModels hideMappings showForceFields showVisualModels"/>
     <DefaultAnimationLoop/>
 
     <Node name="SmallSquare" activated="true">
